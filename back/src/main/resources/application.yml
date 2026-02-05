@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521/xe
+    url: jdbc:oracle:thin:@localhost:1521:XE
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: oracle.jdbc.OracleDriver
@@ -26,7 +26,9 @@ spring:
       timeout: 2000
 
   config:
-    import: optional:application-oauth.yml
+    import: 
+      - optional:application-oauth.yml
+      - optional:file:.env[.properties]
 
 mybatis:
   config-location: classpath:mybatis-config.xml
@@ -45,4 +47,4 @@ file:
   upload-dir: uploads
 
 server:
-  port: 8484
+  port: 8080
